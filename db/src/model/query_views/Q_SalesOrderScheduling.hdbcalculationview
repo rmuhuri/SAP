@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" id="CV_SalesOrderList_Scheduling" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" id="Q_SalesOrderScheduling" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
 <descriptions defaultDescription="Sales Order List Scheduling"/>
 <localVariables>
   <variable id="IP_DocumentYearFrom" parameter="true">
@@ -18,28 +18,28 @@
   </variable>
 </localVariables>
 <variableMappings>
-  <mapping xsi:type="Variable:VariableMapping" dataSource="SalesOrderList_Items">
-    <targetVariable name="IP_DocumentYearFrom" resourceUri="SalesOrderList_Items"/>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="Q_SalesOrderListItems">
+    <targetVariable name="IP_DocumentYearFrom" resourceUri="Q_SalesOrderListItems"/>
     <localVariable>IP_DocumentYearFrom</localVariable>
   </mapping>
-  <mapping xsi:type="Variable:VariableMapping" dataSource="SalesOrderList_Items">
-    <targetVariable name="IP_DocumentYearTO" resourceUri="SalesOrderList_Items"/>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="Q_SalesOrderListItems">
+    <targetVariable name="IP_DocumentYearTO" resourceUri="Q_SalesOrderListItems"/>
     <localVariable>IP_DocumentYearTO</localVariable>
   </mapping>
 </variableMappings>
 <dataSources>
-  <DataSource id="SalesOrderList_Items">
-    <resourceUri>SalesOrderList_Items</resourceUri>
+  <DataSource id="Q_SalesOrderListItems">
+    <resourceUri>Q_SalesOrderListItems</resourceUri>
   </DataSource>
   <DataSource id="SALES_DOC_SCH_LINE">
     <resourceUri>SALES_DOC_SCH_LINE</resourceUri>
   </DataSource>
-  <DataSource id="CustomerMasterList">
-    <resourceUri>CustomerMasterList</resourceUri>
+  <DataSource id="Q_CustomerMasterList">
+    <resourceUri>Q_CustomerMasterList</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews>
-  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="SQL">
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
     <viewAttributes>
       <viewAttribute id="CompanyCode"/>
       <viewAttribute id="SalesDocumentType"/>
@@ -73,7 +73,7 @@
       <viewAttribute id="SD_Count"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="SalesOrderList_Items"/></calculationView>
+    <input node="Q_SalesOrderListItems"/></calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
     <viewAttributes>
       <viewAttribute id="VBELN"/>
@@ -147,7 +147,7 @@
       <viewAttribute id="CustomerNumber"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="CustomerMasterList"/>
+    <input node="Q_CustomerMasterList"/>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="CN_N" joinType="leftOuter">
     <viewAttributes>

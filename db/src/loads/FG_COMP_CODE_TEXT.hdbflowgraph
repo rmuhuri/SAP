@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="322802f6635a8c683569919ff3263a25" name="FG_CompCodeText" runtimeBehavior="BATCH_TASK">
+<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="322802f6635a8c683569919ff3263a25" name="FG_COMP_CODE_TEXT" runtimeBehavior="BATCH_TASK">
   <annotations key="sap.afm.layout" xmi:id="5e58d70a5cb31809030cbac6da2ec1bf">
     <annotations xmi:id="c5d856fdc0fc72888456002f9ab4ea7f" key="x" value="10">
     </annotations>
@@ -60,20 +60,17 @@
     </annotations>
     <outputs xmi:id="36a211b064f027f2f712404f75d8694d" name="VX_COMP_CODE_TEXT">
       <attributes xmi:id="bd5556537f6e634c8906f008c5c6ebd4" name="BUKRS" type="NVARCHAR" nullable="true" length="4">
-        <annotations xmi:id="0c2f607ffe30ece1ca3b9378fc80a3a6" key="sap.im.primaryKey" value="false">
-        </annotations>
+        <annotations xmi:id="0c2f607ffe30ece1ca3b9378fc80a3a6" key="sap.im.primaryKey" value="false"/>
       </attributes>
       <attributes xmi:id="1e01dd0836d131cb6b32a02a34ced787" name="TXTMD" type="NVARCHAR" nullable="true" length="25">
-        <annotations xmi:id="c5ce4455b97b9c397de38bf892b4ca71" key="sap.im.primaryKey" value="false">
-        </annotations>
+        <annotations xmi:id="c5ce4455b97b9c397de38bf892b4ca71" key="sap.im.primaryKey" value="false"/>
       </attributes>
       <attributes xmi:id="3a7a97587bce2e6ff225134ed84df06f" name="LANGU" type="NVARCHAR" nullable="true" length="1">
-        <annotations xmi:id="b64986dd5a2976084addf13287813c67" key="sap.im.primaryKey" value="false">
-        </annotations>
+        <annotations xmi:id="b64986dd5a2976084addf13287813c67" key="sap.im.primaryKey" value="false"/>
       </attributes>
     </outputs>
   </nodes>
-  <nodes xmi:id="30ccf7669797ab2db1ef63a7152dee54" xsi:type="flowgraph:FilterNode" name="Projection">
+  <nodes xmi:id="30ccf7669797ab2db1ef63a7152dee54" xsi:type="flowgraph:FilterNode" name="Projection" expression="&quot;LANGU&quot;=&#x27;E&#x27;">
     <annotations key="sap.afm.layout" xmi:id="7125e42acf034c4bd548b567991e7411">
       <annotations xmi:id="9b112103f375b1cb55c364d92a904d2b" key="x" value="327">
       </annotations>
@@ -86,34 +83,28 @@
     </annotations>
     <inputs xmi:id="e3f2032a03199307bd8b6e00df9476bb" name="Projection_IN">
       <attributes xmi:id="e9c3a51aa5f2ef7e8c239ce536eb82c3" name="BUKRS" type="NVARCHAR" nullable="true" length="4">
-        <annotations xmi:id="a66c0774b3b2ac9e3e31f90c62045ea4" key="sap.im.primaryKey" value="false">
-        </annotations>
+        <annotations xmi:id="a66c0774b3b2ac9e3e31f90c62045ea4" key="sap.im.primaryKey" value="false"/>
       </attributes>
       <attributes xmi:id="e743ee86fd210474e457a350603adf51" name="TXTMD" type="NVARCHAR" nullable="true" length="25">
-        <annotations xmi:id="509bb575d394bfd25dc16686c2c4afc0" key="sap.im.primaryKey" value="false">
-        </annotations>
+        <annotations xmi:id="509bb575d394bfd25dc16686c2c4afc0" key="sap.im.primaryKey" value="false"/>
       </attributes>
       <attributes xmi:id="4355d3cc85fd5e3faf852bcb7970dedf" name="LANGU" type="NVARCHAR" nullable="true" length="1">
-        <annotations xmi:id="027a152d3882b7b7b39e88b6e8e87639" key="sap.im.primaryKey" value="false">
-        </annotations>
+        <annotations xmi:id="027a152d3882b7b7b39e88b6e8e87639" key="sap.im.primaryKey" value="false"/>
       </attributes>
     </inputs>
     <outputs xmi:id="8fdd23e1d373936f4d163ff2d47469b9" name="Projection_OUT">
       <attributes xmi:id="eaf44721ecd74874015701bde1cd886b" name="BUKRS" type="NVARCHAR" nullable="false" expression="&quot;BUKRS&quot;" length="4">
-        <annotations xmi:id="ba5abdad632d345018cbd725955c2c9c" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="ba5abdad632d345018cbd725955c2c9c" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="cd78178f17c6902ffad8c74cd8e46c87" name="TXTMD" type="NVARCHAR" nullable="true" expression="&quot;TXTMD&quot;" length="25">
-        <annotations xmi:id="02b828d95ea5506cf22cbb4dca9022f1" key="sap.im.primaryKey" value="false">
-        </annotations>
+        <annotations xmi:id="02b828d95ea5506cf22cbb4dca9022f1" key="sap.im.primaryKey" value="false"/>
       </attributes>
       <attributes xmi:id="5f9b7a5e47c781e2f83931d93c8f3f4b" name="LANGU" type="NVARCHAR" nullable="false" expression="&quot;LANGU&quot;" length="1">
-        <annotations xmi:id="3307a10f18ba79f4bacfabbe20ef7eca" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="3307a10f18ba79f4bacfabbe20ef7eca" key="sap.im.primaryKey" value="true"/>
       </attributes>
     </outputs>
   </nodes>
-  <nodes xmi:id="2e49e79e151ddbaa32c3e23a3658a47c" name="COMP_CODE_TEXT" catalogObjectName="COMP_CODE_TEXT" type="TEMPLATE_TABLE" xsi:type="flowgraph:DataNode">
+  <nodes xmi:id="2e49e79e151ddbaa32c3e23a3658a47c" name="COMP_CODE_TEXT" catalogObjectName="COMP_CODE_TEXT" type="TEMPLATE_TABLE" xsi:type="flowgraph:DataNode" truncateTable="true">
     <annotations key="sap.afm.layout" xmi:id="897029cfd9bc6082a489d903b906b3db">
       <annotations xmi:id="fdcbd19aef8c23787479ddae65491095" key="x" value="536">
       </annotations>
