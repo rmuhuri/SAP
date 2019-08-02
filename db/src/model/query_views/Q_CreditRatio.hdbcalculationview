@@ -106,13 +106,17 @@
       <viewAttribute id="CostAmount"/>
       <viewAttribute id="PricingScaleQuantityInBaseUnit"/>
       <viewAttribute id="ItemVolume"/>
+    
+      <viewAttribute id="VBTYP"/>
+    
+      <viewAttribute id="ANZFKPOS"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="B_BillingItem">
       <mapping xsi:type="Calculation:AttributeMapping" target="HeaderBillingDocument" source="BillingDocument"/>
     </input>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="leftOuter">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="inner" optimizeJoinColumns="false">
     <viewAttributes>
       <viewAttribute id="BillingDocument"/>
       <viewAttribute id="BillingDocumentItem"/>
@@ -173,12 +177,79 @@
       <viewAttribute id="SDDocumentCategory"/>
       <viewAttribute id="SalesOrganization"/>
       <viewAttribute id="DistributionChannel"/>
-      <viewAttribute id="TransactionCurrency"/></viewAttributes>
+      <viewAttribute id="TransactionCurrency"/>
+      <viewAttribute id="VBTYP"/>
+    
+      <viewAttribute id="ANZFKPOS" aggregationType="sum"/>
+    </viewAttributes>
     <calculatedViewAttributes/>
     <input node="BillingItem_P">
-      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument" source="HeaderBillingDocument"/></input>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument" source="HeaderBillingDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentItem" source="BillingDocumentItem"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantityUnit" source="BillingQuantityUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingToBaseQuantityNumrtr" source="BillingToBaseQuantityNumrtr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingToBaseQuantityDnmntr" source="BillingToBaseQuantityDnmntr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BaseUnit" source="BaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemWeightUnit" source="ItemWeightUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemVolumeUnit" source="ItemVolumeUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PricingDate" source="PricingDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ServicesRenderedDate" source="ServicesRenderedDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PriceDetnExchangeRate" source="PriceDetnExchangeRate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ReferenceSDDocument" source="ReferenceSDDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocument" source="SalesDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItem" source="SalesDocumentItem"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="Material"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Batch" source="Batch"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroup" source="MaterialGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItemCategory" source="SalesDocumentItemCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItemType" source="SalesDocumentItemType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductHierarchyNode" source="ProductHierarchyNode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RebateBasisAmount" source="RebateBasisAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemGrossWeight" source="ItemGrossWeight"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemGrossAmountOfBillingDoc" source="ItemGrossAmountOfBillingDoc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantity" source="BillingQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantityInBaseUnit" source="BillingQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal1Amount" source="Subtotal1Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal2Amount" source="Subtotal2Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal3Amount" source="Subtotal3Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal4Amount" source="Subtotal4Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal5Amount" source="Subtotal5Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal6Amount" source="Subtotal6Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRPRequiredQuantityInBaseUnit" source="MRPRequiredQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TaxAmount" source="TaxAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemNetAmountOfBillingDoc" source="ItemNetAmountOfBillingDoc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemNetWeight" source="ItemNetWeight"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EligibleAmountForCashDiscount" source="EligibleAmountForCashDiscount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CostAmount" source="CostAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PricingScaleQuantityInBaseUnit" source="PricingScaleQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemVolume" source="ItemVolume"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP" source="VBTYP"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANZFKPOS" source="ANZFKPOS"/>
+    </input>
     <input node="BillingHdr_P">
       <mapping xsi:type="Calculation:AttributeMapping" target="HeaderBillingDocument" source="BillingDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompanyCode" source="CompanyCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDistrict" source="SalesDistrict"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreationDate" source="CreationDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreatedByUser" source="CreatedByUser"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentType" source="BillingDocumentType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="InvoiceListBillingDate" source="InvoiceListBillingDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentCategory" source="BillingDocumentCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IncotermsClassification" source="IncotermsClassification"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IncotermsTransferLocation" source="IncotermsTransferLocation"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerGroup" source="CustomerGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToParty" source="SoldToParty"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerParty" source="PayerParty"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AccountingExchangeRate" source="AccountingExchangeRate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ExchangeRateType" source="ExchangeRateType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Division" source="Division"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="StatisticsCurrency" source="StatisticsCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SDDocumentCategory" source="SDDocumentCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganization" source="SalesOrganization"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DistributionChannel" source="DistributionChannel"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TransactionCurrency" source="TransactionCurrency"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument" source="BillingDocument"/>
     </input>
     <joinAttribute name="BillingDocument"/>
@@ -265,12 +336,85 @@
       <viewAttribute id="Country"/>
       <viewAttribute id="FiscalYearVariant"/>
       <viewAttribute id="SalesOrganizationCurrency"/>
-      <viewAttribute id="SalesOrganizationName"/></viewAttributes>
+      <viewAttribute id="SalesOrganizationName"/>
+      <viewAttribute id="VBTYP"/>
+    
+      <viewAttribute id="ANZFKPOS" aggregationType="sum"/>
+    </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_1">
-      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganization" source="SalesOrganization"/></input>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganization" source="SalesOrganization"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument" source="BillingDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentItem" source="BillingDocumentItem"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantityUnit" source="BillingQuantityUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingToBaseQuantityNumrtr" source="BillingToBaseQuantityNumrtr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingToBaseQuantityDnmntr" source="BillingToBaseQuantityDnmntr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BaseUnit" source="BaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemWeightUnit" source="ItemWeightUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemVolumeUnit" source="ItemVolumeUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PricingDate" source="PricingDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ServicesRenderedDate" source="ServicesRenderedDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PriceDetnExchangeRate" source="PriceDetnExchangeRate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ReferenceSDDocument" source="ReferenceSDDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocument" source="SalesDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItem" source="SalesDocumentItem"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="Material"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Batch" source="Batch"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroup" source="MaterialGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItemCategory" source="SalesDocumentItemCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItemType" source="SalesDocumentItemType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductHierarchyNode" source="ProductHierarchyNode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RebateBasisAmount" source="RebateBasisAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemGrossWeight" source="ItemGrossWeight"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemGrossAmountOfBillingDoc" source="ItemGrossAmountOfBillingDoc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantity" source="BillingQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantityInBaseUnit" source="BillingQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal1Amount" source="Subtotal1Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal2Amount" source="Subtotal2Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal3Amount" source="Subtotal3Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal4Amount" source="Subtotal4Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal5Amount" source="Subtotal5Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal6Amount" source="Subtotal6Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRPRequiredQuantityInBaseUnit" source="MRPRequiredQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TaxAmount" source="TaxAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemNetAmountOfBillingDoc" source="ItemNetAmountOfBillingDoc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemNetWeight" source="ItemNetWeight"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EligibleAmountForCashDiscount" source="EligibleAmountForCashDiscount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CostAmount" source="CostAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PricingScaleQuantityInBaseUnit" source="PricingScaleQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemVolume" source="ItemVolume"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HeaderBillingDocument" source="HeaderBillingDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompanyCode" source="CompanyCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDistrict" source="SalesDistrict"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreationDate" source="CreationDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreatedByUser" source="CreatedByUser"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentType" source="BillingDocumentType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="InvoiceListBillingDate" source="InvoiceListBillingDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentCategory" source="BillingDocumentCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IncotermsClassification" source="IncotermsClassification"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IncotermsTransferLocation" source="IncotermsTransferLocation"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerGroup" source="CustomerGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToParty" source="SoldToParty"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerParty" source="PayerParty"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AccountingExchangeRate" source="AccountingExchangeRate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ExchangeRateType" source="ExchangeRateType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Division" source="Division"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="StatisticsCurrency" source="StatisticsCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SDDocumentCategory" source="SDDocumentCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DistributionChannel" source="DistributionChannel"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TransactionCurrency" source="TransactionCurrency"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP" source="VBTYP"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANZFKPOS" source="ANZFKPOS"/>
+    </input>
     <input node="SalesOrg_P">
       <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrgCompCode" source="SalesOrgCompanyCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Customer" source="Customer"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Country" source="Country"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FiscalYearVariant" source="FiscalYearVariant"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganizationCurrency" source="SalesOrganizationCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganizationName" source="SalesOrganizationName"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganization" source="SalesOrganization"/>
     </input>
     <joinAttribute name="SalesOrganization"/>
@@ -360,11 +504,90 @@
       <viewAttribute id="ProductHierarchy"/>
       <viewAttribute id="MaterialCategory"/>
       <viewAttribute id="MaterialName"/>
+    
+      <viewAttribute id="VBTYP"/>
+    
+      <viewAttribute id="ANZFKPOS" aggregationType="sum"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_2">
-      <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="Material"/></input>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="Material"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument" source="BillingDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentItem" source="BillingDocumentItem"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantityUnit" source="BillingQuantityUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingToBaseQuantityNumrtr" source="BillingToBaseQuantityNumrtr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingToBaseQuantityDnmntr" source="BillingToBaseQuantityDnmntr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BaseUnit" source="BaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemWeightUnit" source="ItemWeightUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemVolumeUnit" source="ItemVolumeUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PricingDate" source="PricingDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ServicesRenderedDate" source="ServicesRenderedDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PriceDetnExchangeRate" source="PriceDetnExchangeRate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ReferenceSDDocument" source="ReferenceSDDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocument" source="SalesDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItem" source="SalesDocumentItem"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Batch" source="Batch"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroup" source="MaterialGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItemCategory" source="SalesDocumentItemCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItemType" source="SalesDocumentItemType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductHierarchyNode" source="ProductHierarchyNode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RebateBasisAmount" source="RebateBasisAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemGrossWeight" source="ItemGrossWeight"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemGrossAmountOfBillingDoc" source="ItemGrossAmountOfBillingDoc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantity" source="BillingQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantityInBaseUnit" source="BillingQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal1Amount" source="Subtotal1Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal2Amount" source="Subtotal2Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal3Amount" source="Subtotal3Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal4Amount" source="Subtotal4Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal5Amount" source="Subtotal5Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal6Amount" source="Subtotal6Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRPRequiredQuantityInBaseUnit" source="MRPRequiredQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TaxAmount" source="TaxAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemNetAmountOfBillingDoc" source="ItemNetAmountOfBillingDoc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemNetWeight" source="ItemNetWeight"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EligibleAmountForCashDiscount" source="EligibleAmountForCashDiscount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CostAmount" source="CostAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PricingScaleQuantityInBaseUnit" source="PricingScaleQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemVolume" source="ItemVolume"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HeaderBillingDocument" source="HeaderBillingDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompanyCode" source="CompanyCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDistrict" source="SalesDistrict"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreationDate" source="CreationDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreatedByUser" source="CreatedByUser"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentType" source="BillingDocumentType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="InvoiceListBillingDate" source="InvoiceListBillingDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentCategory" source="BillingDocumentCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IncotermsClassification" source="IncotermsClassification"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IncotermsTransferLocation" source="IncotermsTransferLocation"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerGroup" source="CustomerGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToParty" source="SoldToParty"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerParty" source="PayerParty"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AccountingExchangeRate" source="AccountingExchangeRate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ExchangeRateType" source="ExchangeRateType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Division" source="Division"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="StatisticsCurrency" source="StatisticsCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SDDocumentCategory" source="SDDocumentCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganization" source="SalesOrganization"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DistributionChannel" source="DistributionChannel"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TransactionCurrency" source="TransactionCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrgCompCode" source="SalesOrgCompCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Customer" source="Customer"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Country" source="Country"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FiscalYearVariant" source="FiscalYearVariant"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganizationCurrency" source="SalesOrganizationCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganizationName" source="SalesOrganizationName"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP" source="VBTYP"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANZFKPOS" source="ANZFKPOS"/>
+    </input>
     <input node="Material_P">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialType" source="MaterialType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialBaseUnit" source="MaterialBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductHierarchy" source="ProductHierarchy"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialCategory" source="MaterialCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialName" source="MaterialName"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="Material"/>
     </input>
     <joinAttribute name="Material"/>
@@ -443,21 +666,101 @@
       <viewAttribute id="MaterialCategory"/>
       <viewAttribute id="MaterialName"/>
       <viewAttribute id="MaterialGroupText"/>
+    
+      <viewAttribute id="VBTYP"/>
+    
+      <viewAttribute id="ANZFKPOS" aggregationType="sum"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_3">
       <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroup" source="MaterialGroup"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument" source="BillingDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentItem" source="BillingDocumentItem"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantityUnit" source="BillingQuantityUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingToBaseQuantityNumrtr" source="BillingToBaseQuantityNumrtr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingToBaseQuantityDnmntr" source="BillingToBaseQuantityDnmntr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BaseUnit" source="BaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemWeightUnit" source="ItemWeightUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemVolumeUnit" source="ItemVolumeUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PricingDate" source="PricingDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ServicesRenderedDate" source="ServicesRenderedDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PriceDetnExchangeRate" source="PriceDetnExchangeRate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ReferenceSDDocument" source="ReferenceSDDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocument" source="SalesDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItem" source="SalesDocumentItem"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="Material"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Batch" source="Batch"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItemCategory" source="SalesDocumentItemCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItemType" source="SalesDocumentItemType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductHierarchyNode" source="ProductHierarchyNode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RebateBasisAmount" source="RebateBasisAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemGrossWeight" source="ItemGrossWeight"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemGrossAmountOfBillingDoc" source="ItemGrossAmountOfBillingDoc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantity" source="BillingQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantityInBaseUnit" source="BillingQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal1Amount" source="Subtotal1Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal2Amount" source="Subtotal2Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal3Amount" source="Subtotal3Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal4Amount" source="Subtotal4Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal5Amount" source="Subtotal5Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal6Amount" source="Subtotal6Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRPRequiredQuantityInBaseUnit" source="MRPRequiredQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TaxAmount" source="TaxAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemNetAmountOfBillingDoc" source="ItemNetAmountOfBillingDoc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemNetWeight" source="ItemNetWeight"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EligibleAmountForCashDiscount" source="EligibleAmountForCashDiscount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CostAmount" source="CostAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PricingScaleQuantityInBaseUnit" source="PricingScaleQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemVolume" source="ItemVolume"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HeaderBillingDocument" source="HeaderBillingDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompanyCode" source="CompanyCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDistrict" source="SalesDistrict"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreationDate" source="CreationDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreatedByUser" source="CreatedByUser"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentType" source="BillingDocumentType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="InvoiceListBillingDate" source="InvoiceListBillingDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentCategory" source="BillingDocumentCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IncotermsClassification" source="IncotermsClassification"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IncotermsTransferLocation" source="IncotermsTransferLocation"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerGroup" source="CustomerGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToParty" source="SoldToParty"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerParty" source="PayerParty"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AccountingExchangeRate" source="AccountingExchangeRate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ExchangeRateType" source="ExchangeRateType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Division" source="Division"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="StatisticsCurrency" source="StatisticsCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SDDocumentCategory" source="SDDocumentCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganization" source="SalesOrganization"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DistributionChannel" source="DistributionChannel"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TransactionCurrency" source="TransactionCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrgCompCode" source="SalesOrgCompCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Customer" source="Customer"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Country" source="Country"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FiscalYearVariant" source="FiscalYearVariant"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganizationCurrency" source="SalesOrganizationCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganizationName" source="SalesOrganizationName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialType" source="MaterialType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialBaseUnit" source="MaterialBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductHierarchy" source="ProductHierarchy"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialCategory" source="MaterialCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialName" source="MaterialName"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP" source="VBTYP"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANZFKPOS" source="ANZFKPOS"/>
     </input>
     <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroupText" source="MaterialGroupText"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroup" source="MaterialGroup"/>
     </input>
     <joinAttribute name="MaterialGroup"/>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
     <viewAttributes>
+      <viewAttribute id="MaterialGroupText"/>
     
-      <viewAttribute id="MaterialGroup"/>
-      <viewAttribute id="MaterialGroupText"/></viewAttributes>
+      <viewAttribute id="MaterialGroup"/></viewAttributes>
     <calculatedViewAttributes/>
     <input node="D_MATGROUP_TEXT"/>
   </calculationView>
@@ -555,6 +858,10 @@
       <viewAttribute id="CompanyCodeName"/>
     
       <viewAttribute id="MaterialGroupText"/>
+    
+      <viewAttribute id="VBTYP"/>
+    
+      <viewAttribute id="ANZFKPOS" aggregationType="sum"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_4">
@@ -562,8 +869,86 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="Country" source="Country"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="FiscalYearVariant" source="FiscalYearVariant"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument_1" source="HeaderBillingDocument"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument" source="BillingDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentItem" source="BillingDocumentItem"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantityUnit" source="BillingQuantityUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingToBaseQuantityNumrtr" source="BillingToBaseQuantityNumrtr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingToBaseQuantityDnmntr" source="BillingToBaseQuantityDnmntr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BaseUnit" source="BaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemWeightUnit" source="ItemWeightUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemVolumeUnit" source="ItemVolumeUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PricingDate" source="PricingDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ServicesRenderedDate" source="ServicesRenderedDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PriceDetnExchangeRate" source="PriceDetnExchangeRate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ReferenceSDDocument" source="ReferenceSDDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocument" source="SalesDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItem" source="SalesDocumentItem"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="Material"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Batch" source="Batch"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroup" source="MaterialGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItemCategory" source="SalesDocumentItemCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItemType" source="SalesDocumentItemType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductHierarchyNode" source="ProductHierarchyNode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RebateBasisAmount" source="RebateBasisAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemGrossWeight" source="ItemGrossWeight"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemGrossAmountOfBillingDoc" source="ItemGrossAmountOfBillingDoc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantity" source="BillingQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantityInBaseUnit" source="BillingQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal1Amount" source="Subtotal1Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal2Amount" source="Subtotal2Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal3Amount" source="Subtotal3Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal4Amount" source="Subtotal4Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal5Amount" source="Subtotal5Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal6Amount" source="Subtotal6Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRPRequiredQuantityInBaseUnit" source="MRPRequiredQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TaxAmount" source="TaxAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemNetAmountOfBillingDoc" source="ItemNetAmountOfBillingDoc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemNetWeight" source="ItemNetWeight"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EligibleAmountForCashDiscount" source="EligibleAmountForCashDiscount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CostAmount" source="CostAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PricingScaleQuantityInBaseUnit" source="PricingScaleQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemVolume" source="ItemVolume"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDistrict" source="SalesDistrict"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreationDate" source="CreationDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreatedByUser" source="CreatedByUser"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentType" source="BillingDocumentType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="InvoiceListBillingDate" source="InvoiceListBillingDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentCategory" source="BillingDocumentCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IncotermsClassification" source="IncotermsClassification"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IncotermsTransferLocation" source="IncotermsTransferLocation"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerGroup" source="CustomerGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToParty" source="SoldToParty"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerParty" source="PayerParty"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AccountingExchangeRate" source="AccountingExchangeRate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ExchangeRateType" source="ExchangeRateType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Division" source="Division"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="StatisticsCurrency" source="StatisticsCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SDDocumentCategory" source="SDDocumentCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganization" source="SalesOrganization"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DistributionChannel" source="DistributionChannel"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TransactionCurrency" source="TransactionCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrgCompCode" source="SalesOrgCompCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Customer" source="Customer"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganizationCurrency" source="SalesOrganizationCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganizationName" source="SalesOrganizationName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialType" source="MaterialType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialBaseUnit" source="MaterialBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductHierarchy" source="ProductHierarchy"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialCategory" source="MaterialCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialName" source="MaterialName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroupText" source="MaterialGroupText"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP" source="VBTYP"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANZFKPOS" source="ANZFKPOS"/>
     </input>
     <input node="COMPCODE_P">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Currency" source="Currency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ChartOfAccounts" source="ChartOfAccounts"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreditControlArea" source="CreditControlArea"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Company" source="Company"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompanyCodeName" source="CompanyCodeName"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CompanyCode" source="CompanyCode"/>
     </input>
     <joinAttribute name="CompanyCode"/>
@@ -657,11 +1042,97 @@
       <viewAttribute id="CompanyCodeName"/>
       <viewAttribute id="MaterialGroupText"/>
       <viewAttribute id="BillingCategoryText"/>
+    
+      <viewAttribute id="VBTYP"/>
+    
+      <viewAttribute id="ANZFKPOS" aggregationType="sum"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_5">
-      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentCategory" source="BillingDocumentCategory"/></input>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentCategory" source="BillingDocumentCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument" source="BillingDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentItem" source="BillingDocumentItem"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantityUnit" source="BillingQuantityUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingToBaseQuantityNumrtr" source="BillingToBaseQuantityNumrtr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingToBaseQuantityDnmntr" source="BillingToBaseQuantityDnmntr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BaseUnit" source="BaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemWeightUnit" source="ItemWeightUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemVolumeUnit" source="ItemVolumeUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PricingDate" source="PricingDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ServicesRenderedDate" source="ServicesRenderedDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PriceDetnExchangeRate" source="PriceDetnExchangeRate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ReferenceSDDocument" source="ReferenceSDDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocument" source="SalesDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItem" source="SalesDocumentItem"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="Material"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Batch" source="Batch"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroup" source="MaterialGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItemCategory" source="SalesDocumentItemCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItemType" source="SalesDocumentItemType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductHierarchyNode" source="ProductHierarchyNode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RebateBasisAmount" source="RebateBasisAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemGrossWeight" source="ItemGrossWeight"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemGrossAmountOfBillingDoc" source="ItemGrossAmountOfBillingDoc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantity" source="BillingQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantityInBaseUnit" source="BillingQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal1Amount" source="Subtotal1Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal2Amount" source="Subtotal2Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal3Amount" source="Subtotal3Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal4Amount" source="Subtotal4Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal5Amount" source="Subtotal5Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal6Amount" source="Subtotal6Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRPRequiredQuantityInBaseUnit" source="MRPRequiredQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TaxAmount" source="TaxAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemNetAmountOfBillingDoc" source="ItemNetAmountOfBillingDoc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemNetWeight" source="ItemNetWeight"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EligibleAmountForCashDiscount" source="EligibleAmountForCashDiscount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CostAmount" source="CostAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PricingScaleQuantityInBaseUnit" source="PricingScaleQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemVolume" source="ItemVolume"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument_1" source="BillingDocument_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompanyCode" source="CompanyCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDistrict" source="SalesDistrict"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreationDate" source="CreationDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreatedByUser" source="CreatedByUser"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentType" source="BillingDocumentType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="InvoiceListBillingDate" source="InvoiceListBillingDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IncotermsClassification" source="IncotermsClassification"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IncotermsTransferLocation" source="IncotermsTransferLocation"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerGroup" source="CustomerGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToParty" source="SoldToParty"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerParty" source="PayerParty"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AccountingExchangeRate" source="AccountingExchangeRate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ExchangeRateType" source="ExchangeRateType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Division" source="Division"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="StatisticsCurrency" source="StatisticsCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SDDocumentCategory" source="SDDocumentCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganization" source="SalesOrganization"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DistributionChannel" source="DistributionChannel"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TransactionCurrency" source="TransactionCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrgCompCode" source="SalesOrgCompCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Customer" source="Customer"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Country" source="Country"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FiscalYearVariant" source="FiscalYearVariant"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganizationCurrency" source="SalesOrganizationCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganizationName" source="SalesOrganizationName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialType" source="MaterialType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialBaseUnit" source="MaterialBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductHierarchy" source="ProductHierarchy"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialCategory" source="MaterialCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialName" source="MaterialName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Currency" source="Currency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ChartOfAccounts" source="ChartOfAccounts"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreditControlArea" source="CreditControlArea"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Company" source="Company"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompanyCodeName" source="CompanyCodeName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroupText" source="MaterialGroupText"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP" source="VBTYP"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANZFKPOS" source="ANZFKPOS"/>
+    </input>
     <input node="BillingCategory_P">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingCategoryText" source="BillingCategoryText"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentCategory" source="KEY1"/>
     </input>
     <joinAttribute name="BillingDocumentCategory"/>
@@ -774,12 +1245,104 @@
       <viewAttribute id="SoldToCustomerAccountGroup"/>
       <viewAttribute id="SoldToCity"/>
       <viewAttribute id="SoldToCustomerName"/>
+    
+      <viewAttribute id="VBTYP"/>
+    
+      <viewAttribute id="ANZFKPOS" aggregationType="sum"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_6">
-      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToParty" source="SoldToParty"/></input>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToParty" source="SoldToParty"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument" source="BillingDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentItem" source="BillingDocumentItem"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantityUnit" source="BillingQuantityUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingToBaseQuantityNumrtr" source="BillingToBaseQuantityNumrtr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingToBaseQuantityDnmntr" source="BillingToBaseQuantityDnmntr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BaseUnit" source="BaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemWeightUnit" source="ItemWeightUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemVolumeUnit" source="ItemVolumeUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PricingDate" source="PricingDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ServicesRenderedDate" source="ServicesRenderedDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PriceDetnExchangeRate" source="PriceDetnExchangeRate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ReferenceSDDocument" source="ReferenceSDDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocument" source="SalesDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItem" source="SalesDocumentItem"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="Material"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Batch" source="Batch"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroup" source="MaterialGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItemCategory" source="SalesDocumentItemCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItemType" source="SalesDocumentItemType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductHierarchyNode" source="ProductHierarchyNode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RebateBasisAmount" source="RebateBasisAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemGrossWeight" source="ItemGrossWeight"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemGrossAmountOfBillingDoc" source="ItemGrossAmountOfBillingDoc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantity" source="BillingQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantityInBaseUnit" source="BillingQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal1Amount" source="Subtotal1Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal2Amount" source="Subtotal2Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal3Amount" source="Subtotal3Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal4Amount" source="Subtotal4Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal5Amount" source="Subtotal5Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal6Amount" source="Subtotal6Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRPRequiredQuantityInBaseUnit" source="MRPRequiredQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TaxAmount" source="TaxAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemNetAmountOfBillingDoc" source="ItemNetAmountOfBillingDoc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemNetWeight" source="ItemNetWeight"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EligibleAmountForCashDiscount" source="EligibleAmountForCashDiscount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CostAmount" source="CostAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PricingScaleQuantityInBaseUnit" source="PricingScaleQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemVolume" source="ItemVolume"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument_1" source="BillingDocument_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompanyCode" source="CompanyCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDistrict" source="SalesDistrict"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreationDate" source="CreationDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreatedByUser" source="CreatedByUser"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentType" source="BillingDocumentType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="InvoiceListBillingDate" source="InvoiceListBillingDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentCategory" source="BillingDocumentCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IncotermsClassification" source="IncotermsClassification"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IncotermsTransferLocation" source="IncotermsTransferLocation"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerGroup" source="CustomerGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerParty" source="PayerParty"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AccountingExchangeRate" source="AccountingExchangeRate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ExchangeRateType" source="ExchangeRateType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Division" source="Division"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="StatisticsCurrency" source="StatisticsCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SDDocumentCategory" source="SDDocumentCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganization" source="SalesOrganization"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DistributionChannel" source="DistributionChannel"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TransactionCurrency" source="TransactionCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrgCompCode" source="SalesOrgCompCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Customer" source="Customer"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Country" source="Country"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FiscalYearVariant" source="FiscalYearVariant"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganizationCurrency" source="SalesOrganizationCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganizationName" source="SalesOrganizationName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialType" source="MaterialType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialBaseUnit" source="MaterialBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductHierarchy" source="ProductHierarchy"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialCategory" source="MaterialCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialName" source="MaterialName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Currency" source="Currency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ChartOfAccounts" source="ChartOfAccounts"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreditControlArea" source="CreditControlArea"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Company" source="Company"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompanyCodeName" source="CompanyCodeName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroupText" source="MaterialGroupText"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingCategoryText" source="BillingCategoryText"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP" source="VBTYP"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANZFKPOS" source="ANZFKPOS"/>
+    </input>
     <input node="SoldTo_P">
       <mapping xsi:type="Calculation:AttributeMapping" target="CustomerNumberSoldTo" source="CustomerNumberSoldTo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToAddress" source="SoldToAddress"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToCountry" source="SoldToCountry"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToRegion" source="SoldToRegion"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToCustomerAccountGroup" source="SoldToCustomerAccountGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToCity" source="SoldToCity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToCustomerName" source="SoldToCustomerName"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SoldToParty" source="CustomerNumberSoldTo"/>
     </input>
     <joinAttribute name="SoldToParty"/>
@@ -898,11 +1461,110 @@
       <viewAttribute id="PayerCity"/>
       <viewAttribute id="PayerCustomerName"/>
       <viewAttribute id="PayerCustomerAccountGroup"/>
+    
+      <viewAttribute id="VBTYP"/>
+    
+      <viewAttribute id="ANZFKPOS" aggregationType="sum"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_7">
-      <mapping xsi:type="Calculation:AttributeMapping" target="PayerParty" source="PayerParty"/></input>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerParty" source="PayerParty"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument" source="BillingDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentItem" source="BillingDocumentItem"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantityUnit" source="BillingQuantityUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingToBaseQuantityNumrtr" source="BillingToBaseQuantityNumrtr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingToBaseQuantityDnmntr" source="BillingToBaseQuantityDnmntr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BaseUnit" source="BaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemWeightUnit" source="ItemWeightUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemVolumeUnit" source="ItemVolumeUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PricingDate" source="PricingDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ServicesRenderedDate" source="ServicesRenderedDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PriceDetnExchangeRate" source="PriceDetnExchangeRate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ReferenceSDDocument" source="ReferenceSDDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocument" source="SalesDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItem" source="SalesDocumentItem"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="Material"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Batch" source="Batch"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroup" source="MaterialGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItemCategory" source="SalesDocumentItemCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItemType" source="SalesDocumentItemType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductHierarchyNode" source="ProductHierarchyNode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RebateBasisAmount" source="RebateBasisAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemGrossWeight" source="ItemGrossWeight"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemGrossAmountOfBillingDoc" source="ItemGrossAmountOfBillingDoc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantity" source="BillingQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantityInBaseUnit" source="BillingQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal1Amount" source="Subtotal1Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal2Amount" source="Subtotal2Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal3Amount" source="Subtotal3Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal4Amount" source="Subtotal4Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal5Amount" source="Subtotal5Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal6Amount" source="Subtotal6Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRPRequiredQuantityInBaseUnit" source="MRPRequiredQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TaxAmount" source="TaxAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemNetAmountOfBillingDoc" source="ItemNetAmountOfBillingDoc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemNetWeight" source="ItemNetWeight"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EligibleAmountForCashDiscount" source="EligibleAmountForCashDiscount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CostAmount" source="CostAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PricingScaleQuantityInBaseUnit" source="PricingScaleQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemVolume" source="ItemVolume"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument_1" source="BillingDocument_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompanyCode" source="CompanyCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDistrict" source="SalesDistrict"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreationDate" source="CreationDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreatedByUser" source="CreatedByUser"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentType" source="BillingDocumentType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="InvoiceListBillingDate" source="InvoiceListBillingDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentCategory" source="BillingDocumentCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IncotermsClassification" source="IncotermsClassification"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IncotermsTransferLocation" source="IncotermsTransferLocation"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerGroup" source="CustomerGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToParty" source="SoldToParty"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AccountingExchangeRate" source="AccountingExchangeRate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ExchangeRateType" source="ExchangeRateType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Division" source="Division"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="StatisticsCurrency" source="StatisticsCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SDDocumentCategory" source="SDDocumentCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganization" source="SalesOrganization"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DistributionChannel" source="DistributionChannel"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TransactionCurrency" source="TransactionCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrgCompCode" source="SalesOrgCompCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Customer" source="Customer"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Country" source="Country"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FiscalYearVariant" source="FiscalYearVariant"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganizationCurrency" source="SalesOrganizationCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganizationName" source="SalesOrganizationName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialType" source="MaterialType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialBaseUnit" source="MaterialBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductHierarchy" source="ProductHierarchy"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialCategory" source="MaterialCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialName" source="MaterialName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Currency" source="Currency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ChartOfAccounts" source="ChartOfAccounts"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreditControlArea" source="CreditControlArea"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Company" source="Company"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompanyCodeName" source="CompanyCodeName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroupText" source="MaterialGroupText"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingCategoryText" source="BillingCategoryText"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerNumberSoldTo" source="CustomerNumberSoldTo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToAddress" source="SoldToAddress"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToCountry" source="SoldToCountry"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToRegion" source="SoldToRegion"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToCustomerAccountGroup" source="SoldToCustomerAccountGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToCity" source="SoldToCity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToCustomerName" source="SoldToCustomerName"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP" source="VBTYP"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANZFKPOS" source="ANZFKPOS"/>
+    </input>
     <input node="Payer_P">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerAddress" source="PayerAddress"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerCountry" source="PayerCountry"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerRegion" source="PayerRegion"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerCity" source="PayerCity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerCustomerName" source="PayerCustomerName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerCustomerAccountGroup" source="PayerCustomerAccountGroup"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PayerParty" source="PayerCustomerNumber"/>
     </input>
     <joinAttribute name="PayerParty"/>
@@ -1023,11 +1685,116 @@
       <viewAttribute id="CustomerAccountGroup"/>
       <viewAttribute id="CustomerCity"/>
       <viewAttribute id="CustomerName"/>
+    
+      <viewAttribute id="VBTYP"/>
+    
+      <viewAttribute id="ANZFKPOS" aggregationType="sum"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_8">
-      <mapping xsi:type="Calculation:AttributeMapping" target="Customer" source="Customer"/></input>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Customer" source="Customer"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument" source="BillingDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentItem" source="BillingDocumentItem"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantityUnit" source="BillingQuantityUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingToBaseQuantityNumrtr" source="BillingToBaseQuantityNumrtr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingToBaseQuantityDnmntr" source="BillingToBaseQuantityDnmntr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BaseUnit" source="BaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemWeightUnit" source="ItemWeightUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemVolumeUnit" source="ItemVolumeUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PricingDate" source="PricingDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ServicesRenderedDate" source="ServicesRenderedDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PriceDetnExchangeRate" source="PriceDetnExchangeRate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ReferenceSDDocument" source="ReferenceSDDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocument" source="SalesDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItem" source="SalesDocumentItem"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="Material"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Batch" source="Batch"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroup" source="MaterialGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItemCategory" source="SalesDocumentItemCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItemType" source="SalesDocumentItemType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductHierarchyNode" source="ProductHierarchyNode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RebateBasisAmount" source="RebateBasisAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemGrossWeight" source="ItemGrossWeight"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemGrossAmountOfBillingDoc" source="ItemGrossAmountOfBillingDoc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantity" source="BillingQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantityInBaseUnit" source="BillingQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal1Amount" source="Subtotal1Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal2Amount" source="Subtotal2Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal3Amount" source="Subtotal3Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal4Amount" source="Subtotal4Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal5Amount" source="Subtotal5Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal6Amount" source="Subtotal6Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRPRequiredQuantityInBaseUnit" source="MRPRequiredQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TaxAmount" source="TaxAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemNetAmountOfBillingDoc" source="ItemNetAmountOfBillingDoc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemNetWeight" source="ItemNetWeight"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EligibleAmountForCashDiscount" source="EligibleAmountForCashDiscount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CostAmount" source="CostAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PricingScaleQuantityInBaseUnit" source="PricingScaleQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemVolume" source="ItemVolume"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument_1" source="BillingDocument_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompanyCode" source="CompanyCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDistrict" source="SalesDistrict"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreationDate" source="CreationDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreatedByUser" source="CreatedByUser"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentType" source="BillingDocumentType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="InvoiceListBillingDate" source="InvoiceListBillingDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentCategory" source="BillingDocumentCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IncotermsClassification" source="IncotermsClassification"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IncotermsTransferLocation" source="IncotermsTransferLocation"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerGroup" source="CustomerGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToParty" source="SoldToParty"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerParty" source="PayerParty"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AccountingExchangeRate" source="AccountingExchangeRate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ExchangeRateType" source="ExchangeRateType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Division" source="Division"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="StatisticsCurrency" source="StatisticsCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SDDocumentCategory" source="SDDocumentCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganization" source="SalesOrganization"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DistributionChannel" source="DistributionChannel"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TransactionCurrency" source="TransactionCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrgCompCode" source="SalesOrgCompCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Country" source="Country"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FiscalYearVariant" source="FiscalYearVariant"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganizationCurrency" source="SalesOrganizationCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganizationName" source="SalesOrganizationName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialType" source="MaterialType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialBaseUnit" source="MaterialBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductHierarchy" source="ProductHierarchy"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialCategory" source="MaterialCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialName" source="MaterialName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Currency" source="Currency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ChartOfAccounts" source="ChartOfAccounts"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreditControlArea" source="CreditControlArea"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Company" source="Company"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompanyCodeName" source="CompanyCodeName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroupText" source="MaterialGroupText"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingCategoryText" source="BillingCategoryText"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerNumberSoldTo" source="CustomerNumberSoldTo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToAddress" source="SoldToAddress"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToCountry" source="SoldToCountry"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToRegion" source="SoldToRegion"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToCustomerAccountGroup" source="SoldToCustomerAccountGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToCity" source="SoldToCity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToCustomerName" source="SoldToCustomerName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerAddress" source="PayerAddress"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerCountry" source="PayerCountry"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerRegion" source="PayerRegion"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerCity" source="PayerCity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerCustomerName" source="PayerCustomerName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerCustomerAccountGroup" source="PayerCustomerAccountGroup"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP" source="VBTYP"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANZFKPOS" source="ANZFKPOS"/>
+    </input>
     <input node="Customer_P">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerAddress" source="CustomerAddress"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CostomerCountry" source="CostomerCountry"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerRegion" source="CustomerRegion"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerAccountGroup" source="CustomerAccountGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerCity" source="CustomerCity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerName" source="CustomerName"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Customer" source="CustomerNumber"/>
     </input>
     <joinAttribute name="Customer"/>
@@ -1158,6 +1925,10 @@
       <viewAttribute id="CALQUARTER"/>
       <viewAttribute id="CALMONTH"/>
       <viewAttribute id="CALWEEK"/>
+    
+      <viewAttribute id="VBTYP"/>
+    
+      <viewAttribute id="ANZFKPOS" aggregationType="sum"/>
     </viewAttributes>
     <calculatedViewAttributes>
       <calculatedViewAttribute id="MonthName" datatype="VARCHAR" length="13" expressionLanguage="SQL">
@@ -1171,8 +1942,119 @@
       </calculatedViewAttribute>
     </calculatedViewAttributes>
     <input node="Join_9">
-      <mapping xsi:type="Calculation:AttributeMapping" target="InvoiceListBillingDate" source="InvoiceListBillingDate"/></input>
+      <mapping xsi:type="Calculation:AttributeMapping" target="InvoiceListBillingDate" source="InvoiceListBillingDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument" source="BillingDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentItem" source="BillingDocumentItem"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantityUnit" source="BillingQuantityUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingToBaseQuantityNumrtr" source="BillingToBaseQuantityNumrtr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingToBaseQuantityDnmntr" source="BillingToBaseQuantityDnmntr"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BaseUnit" source="BaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemWeightUnit" source="ItemWeightUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemVolumeUnit" source="ItemVolumeUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PricingDate" source="PricingDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ServicesRenderedDate" source="ServicesRenderedDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PriceDetnExchangeRate" source="PriceDetnExchangeRate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ReferenceSDDocument" source="ReferenceSDDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocument" source="SalesDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItem" source="SalesDocumentItem"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="Material"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Batch" source="Batch"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroup" source="MaterialGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItemCategory" source="SalesDocumentItemCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocumentItemType" source="SalesDocumentItemType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductHierarchyNode" source="ProductHierarchyNode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RebateBasisAmount" source="RebateBasisAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemGrossWeight" source="ItemGrossWeight"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemGrossAmountOfBillingDoc" source="ItemGrossAmountOfBillingDoc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantity" source="BillingQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingQuantityInBaseUnit" source="BillingQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal1Amount" source="Subtotal1Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal2Amount" source="Subtotal2Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal3Amount" source="Subtotal3Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal4Amount" source="Subtotal4Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal5Amount" source="Subtotal5Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subtotal6Amount" source="Subtotal6Amount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRPRequiredQuantityInBaseUnit" source="MRPRequiredQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TaxAmount" source="TaxAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemNetAmountOfBillingDoc" source="ItemNetAmountOfBillingDoc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemNetWeight" source="ItemNetWeight"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EligibleAmountForCashDiscount" source="EligibleAmountForCashDiscount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CostAmount" source="CostAmount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PricingScaleQuantityInBaseUnit" source="PricingScaleQuantityInBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ItemVolume" source="ItemVolume"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument_1" source="BillingDocument_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompanyCode" source="CompanyCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesDistrict" source="SalesDistrict"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreationDate" source="CreationDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreatedByUser" source="CreatedByUser"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentType" source="BillingDocumentType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentCategory" source="BillingDocumentCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IncotermsClassification" source="IncotermsClassification"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IncotermsTransferLocation" source="IncotermsTransferLocation"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerGroup" source="CustomerGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToParty" source="SoldToParty"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerParty" source="PayerParty"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AccountingExchangeRate" source="AccountingExchangeRate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ExchangeRateType" source="ExchangeRateType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Division" source="Division"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="StatisticsCurrency" source="StatisticsCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SDDocumentCategory" source="SDDocumentCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganization" source="SalesOrganization"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DistributionChannel" source="DistributionChannel"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TransactionCurrency" source="TransactionCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrgCompCode" source="SalesOrgCompCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Customer" source="Customer"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Country" source="Country"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FiscalYearVariant" source="FiscalYearVariant"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganizationCurrency" source="SalesOrganizationCurrency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganizationName" source="SalesOrganizationName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialType" source="MaterialType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialBaseUnit" source="MaterialBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductHierarchy" source="ProductHierarchy"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialCategory" source="MaterialCategory"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialName" source="MaterialName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Currency" source="Currency"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ChartOfAccounts" source="ChartOfAccounts"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CreditControlArea" source="CreditControlArea"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Company" source="Company"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompanyCodeName" source="CompanyCodeName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroupText" source="MaterialGroupText"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingCategoryText" source="BillingCategoryText"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerNumberSoldTo" source="CustomerNumberSoldTo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToAddress" source="SoldToAddress"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToCountry" source="SoldToCountry"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToRegion" source="SoldToRegion"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToCustomerAccountGroup" source="SoldToCustomerAccountGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToCity" source="SoldToCity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToCustomerName" source="SoldToCustomerName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerAddress" source="PayerAddress"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerCountry" source="PayerCountry"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerRegion" source="PayerRegion"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerCity" source="PayerCity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerCustomerName" source="PayerCustomerName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerCustomerAccountGroup" source="PayerCustomerAccountGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerAddress" source="CustomerAddress"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CostomerCountry" source="CostomerCountry"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerRegion" source="CustomerRegion"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerAccountGroup" source="CustomerAccountGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerCity" source="CustomerCity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerName" source="CustomerName"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP" source="VBTYP"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANZFKPOS" source="ANZFKPOS"/>
+    </input>
     <input node="TIME_DIMENSION_P">
+      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER" source="QUARTER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEEK" source="WEEK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEEK_YEAR" source="WEEK_YEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DAY_OF_WEEK" source="DAY_OF_WEEK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DAY" source="DAY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALQUARTER" source="CALQUARTER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALWEEK" source="CALWEEK"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="InvoiceListBillingDate" source="DATE_SAP"/>
     </input>
     <joinAttribute name="InvoiceListBillingDate"/>
@@ -1530,8 +2412,20 @@
       <keyMapping columnObjectName="Join_10" columnName="DAT"/>
   
     </attribute>
+  
+    <attribute id="VBTYP" order="110" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VBTYP"/>
+  
+      <keyMapping columnObjectName="Join_10" columnName="VBTYP"/>
+  
+    </attribute>
   </attributes>
-  <calculatedAttributes/>
+  <calculatedAttributes>
+    <calculatedAttribute id="CC_DEB_CRED" order="111" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="1">
+        <formula>CASE WHEN &quot;VBTYP&quot; IN ('N' , 'O' , '6' ) THEN  'C' ELSE  'D' END</formula>
+      </keyCalculation>
+      </calculatedAttribute></calculatedAttributes>
   <baseMeasures>
     <measure id="BillingToBaseQuantityNumrtr" order="4" aggregationType="sum" measureType="simple" hidden="true">
       <descriptions defaultDescription="BillingToBaseQuantityNumrtr"/>
@@ -1625,9 +2519,93 @@
       <descriptions defaultDescription="Accounting Exchange Rate"/>
       <measureMapping columnObjectName="Join_10" columnName="AccountingExchangeRate"/>
     </measure>
+  
+    <measure id="ANZFKPOS" order="112" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ANZFKPOS"/>
+      <measureMapping columnObjectName="Join_10" columnName="ANZFKPOS"/>
+    </measure>
   </baseMeasures>
-  <calculatedMeasures/>
-  <restrictedMeasures/>
+  <calculatedMeasures>
+    <measure id="RATIO_CREDIT_DEBIT_ITEMS" hidden="false" order="115" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="1" expressionLanguage="SQL">
+      <descriptions defaultDescription="% Ratio of Credit to Debit"/>
+      <formula>(&quot;CC_NUM_OF_CREDIT_ITEMS&quot;/&quot;CC_NUMBER_OF_DEBIT_ITEMS&quot;)*100</formula>
+      
+      
+      </measure>
+  
+    <measure id="RATIO_CREDIT_TO_BILLING_VALUE" order="118" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="1" expressionLanguage="SQL">
+      <descriptions defaultDescription="Ratio of Credit to Billing Value"/>
+      <formula>&quot;CC_CREDIT_VALUE_DOC_CURRENCY&quot;*100/&quot;CC_BILLING_VALUE_DOC_CURR&quot;</formula>
+    
+      </measure>
+    <measure id="RATIO_QUANTITY_CREDIT_TO_DEBIT" order="121" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="1" expressionLanguage="SQL">
+      <descriptions defaultDescription="Ratio of Credit To Debit Quantity"/>
+      <formula>&quot;CC_CREDIT_QUANTITY&quot;*100/&quot;CC_DEBIT_QUANTITY&quot;</formula>
+    
+      </measure>
+    <measure id="RATIO_CREDIT_TO_DEBIT_COSTS" order="124" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="1" expressionLanguage="SQL">
+      <descriptions defaultDescription="Ratio of Credit to Debit Costs"/>
+      <formula>&quot;CC_CREDIT_COST_AMOUNT&quot;*100/&quot;CC_DEBIT_COST_AMOUNT&quot;</formula>
+    
+      </measure>
+  
+    <measure id="CREDIT_QUANTITY" order="125" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="2" expressionLanguage="SQL">
+      <descriptions defaultDescription="Credit Quantity"/>
+      <formula>&quot;CC_CREDIT_QUANTITY&quot;*-1.0</formula>
+    
+      </measure>
+    <measure id="CREDIT_VALUE" order="126" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="2" expressionLanguage="SQL">
+      <descriptions defaultDescription="Credit Value"/>
+      <formula>&quot;CC_CREDIT_VALUE_DOC_CURRENCY&quot;*-1</formula>
+    
+      </measure>
+    <measure id="CREDIT_COSTS" order="127" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="2" expressionLanguage="SQL">
+      <descriptions defaultDescription="Credit Costs"/>
+      <formula>&quot;CC_CREDIT_COST_AMOUNT&quot;*-1.0</formula>
+    
+      </measure>
+    <measure id="CREDIT_ITEMS" order="128" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="2" expressionLanguage="SQL">
+      <descriptions defaultDescription="Credit Items"/>
+      <formula>&quot;CC_NUM_OF_CREDIT_ITEMS&quot;*-1.0</formula>
+    
+      </measure>
+  </calculatedMeasures>
+  <restrictedMeasures>
+    <measure id="CC_NUM_OF_CREDIT_ITEMS" order="113" aggregationType="sum" datatype="DECIMAL" length="9" scale="0" baseMeasure="ANZFKPOS" restrictionExpressionLanguage="SQL" hidden="true">
+      <descriptions defaultDescription="No of Credit Items"/>
+      <restrictionExpression>&quot;VBTYP&quot; IN ('N' , 'O' , '6' ) </restrictionExpression>
+      </measure>
+    <measure id="CC_NUMBER_OF_DEBIT_ITEMS" order="114" aggregationType="sum" datatype="DECIMAL" length="9" scale="0" baseMeasure="ANZFKPOS" restrictionExpressionLanguage="SQL">
+      <descriptions defaultDescription="No of Debit Items"/>
+      <restrictionExpression>&quot;VBTYP&quot; NOT IN ('N' , 'O' , '6' ) </restrictionExpression>
+      </measure>
+  
+    <measure id="CC_CREDIT_VALUE_DOC_CURRENCY" order="116" aggregationType="sum" datatype="DECIMAL" length="15" scale="2" baseMeasure="ItemNetAmountOfBillingDoc" restrictionExpressionLanguage="SQL" hidden="true">
+      <descriptions defaultDescription="Credit Value in Doc Curr"/>
+  
+      <restrictionExpression>&quot;VBTYP&quot; IN ('N' , 'O' , '6' ) </restrictionExpression>
+      </measure>
+    <measure id="CC_BILLING_VALUE_DOC_CURR" order="117" aggregationType="sum" datatype="DECIMAL" length="15" scale="2" baseMeasure="ItemNetAmountOfBillingDoc" restrictionExpressionLanguage="SQL">
+      <descriptions defaultDescription="Billing Value in Doc Curr"/>
+      <restrictionExpression>&quot;VBTYP&quot; NOT IN ('N' , 'O' , '6' ) </restrictionExpression>
+      </measure>
+    <measure id="CC_CREDIT_QUANTITY" hidden="true" order="119" aggregationType="sum" datatype="DECIMAL" length="13" scale="3" baseMeasure="BillingQuantityInBaseUnit" restrictionExpressionLanguage="SQL">
+      <descriptions defaultDescription="Credit Quantity"/>
+      <restrictionExpression>&quot;VBTYP&quot; IN ('N' , 'O' , '6' ) </restrictionExpression>
+      </measure>
+    <measure id="CC_DEBIT_QUANTITY" order="120" aggregationType="sum" datatype="DECIMAL" length="13" scale="3" baseMeasure="BillingQuantityInBaseUnit" restrictionExpressionLanguage="SQL">
+      <descriptions defaultDescription="Debit Quantity"/>
+      <restrictionExpression>&quot;VBTYP&quot; NOT IN ('N' , 'O' , '6' ) </restrictionExpression>
+      </measure>
+    <measure id="CC_CREDIT_COST_AMOUNT" order="122" aggregationType="sum" datatype="DECIMAL" length="13" scale="2" baseMeasure="CostAmount" restrictionExpressionLanguage="SQL" hidden="true">
+      <descriptions defaultDescription="Credit Cost Amount"/>
+      <restrictionExpression>&quot;VBTYP&quot; IN ('N' , 'O' , '6' ) </restrictionExpression>
+      </measure>
+    <measure id="CC_DEBIT_COST_AMOUNT" order="123" aggregationType="sum" datatype="DECIMAL" length="5" scale="0" baseMeasure="BillingToBaseQuantityNumrtr" restrictionExpressionLanguage="SQL">
+      <descriptions defaultDescription="Debit cost Amount"/>
+      <restrictionExpression>&quot;VBTYP&quot; NOT IN ('N' , 'O' , '6' ) </restrictionExpression>
+      </measure>
+  </restrictedMeasures>
   <localDimensions>
     <localDimension id="Time_Hierarchy">
       <attributeRef xsi:type="DataFoundation:Attribute">Year</attributeRef>
