@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" id="Q_SalesOrderFulfilment" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" id="Q_SalesOrderfulfilment" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
 <descriptions defaultDescription="Sales Order Fulfilment"/>
 <localVariables/>
 <variableMappings/>
@@ -809,6 +809,10 @@
       <viewAttribute id="CALMONTH"/>
     
       <viewAttribute id="DATE_SAP"/>
+    
+      <viewAttribute id="YEAR"/>
+      <viewAttribute id="QUARTER"/>
+      <viewAttribute id="MONTH"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="M_TIME_DIMENSION"/>
@@ -855,6 +859,10 @@
       <viewAttribute id="NETPR" aggregationType="sum"/>
       <viewAttribute id="KPEIN" aggregationType="sum"/>
       <viewAttribute id="KMEIN"/>
+    
+      <viewAttribute id="YEAR"/>
+      <viewAttribute id="QUARTER"/>
+      <viewAttribute id="MONTH"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_9">
@@ -898,6 +906,9 @@
     <input node="Projection_11">
       <mapping xsi:type="Calculation:AttributeMapping" target="CALQUARTER" source="CALQUARTER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER" source="QUARTER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CreationDate" source="DATE_SAP"/>
     </input>
     <joinAttribute name="CreationDate"/>
@@ -955,6 +966,10 @@
       <viewAttribute id="NETPR" aggregationType="sum"/>
       <viewAttribute id="KPEIN" aggregationType="sum"/>
       <viewAttribute id="KMEIN"/>
+    
+      <viewAttribute id="YEAR"/>
+      <viewAttribute id="QUARTER"/>
+      <viewAttribute id="MONTH"/>
     </viewAttributes>
     <calculatedViewAttributes>
       <calculatedViewAttribute id="CC_DocMonth" datatype="NVARCHAR" length="7" expressionLanguage="SQL">
@@ -1000,6 +1015,10 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="NETPR" source="NETPR"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="KPEIN" source="KPEIN"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="KMEIN" source="KMEIN"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER" source="QUARTER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
     </input>
     <input node="Projection_12">
       <mapping xsi:type="Calculation:AttributeMapping" target="SalesDocTypeText" source="BEZEI"/>
@@ -1009,72 +1028,23 @@
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="Projection_13">
     <viewAttributes>
+      <viewAttribute id="ROW"/>
       <viewAttribute id="VBELN"/>
       <viewAttribute id="POSNR"/>
-      <viewAttribute id="DELIVERY_SCHEDULE_LINE_NUMBER"/>
-      <viewAttribute id="DELIVERY"/>
-      <viewAttribute id="DELIVERY_ITEM"/>
-      <viewAttribute id="OVERALL_DELIVERY_STATUS_OF_ITEM"/>
-      <viewAttribute id="DELIVERY_STATUS"/>
-      <viewAttribute id="CONFIRMED_DELIVERY_TIME"/>
-      <viewAttribute id="PLANNED_GOODS_ISSUE_DATE_SCHEDULED_LINES"/>
-      <viewAttribute id="MCEX_I_WADAT"/>
-      <viewAttribute id="MCEX_I_WADATLATE"/>
-      <viewAttribute id="ACTUAL_DELIVERY_DATE"/>
-      <viewAttribute id="MCEX_I_LFUHR"/>
-      <viewAttribute id="LAST_ACTUAL_DELIVERY_DATE"/>
-      <viewAttribute id="MCEX_I_LFUHRLATE"/>
-      <viewAttribute id="BASE_UNIT_OF_MEASURE"/>
-      <viewAttribute id="DEFAULT_DELIVERY_BLOCK"/>
-      <viewAttribute id="VBEP_DELETED"/>
-      <viewAttribute id="SALES_UNIT"/>
-      <viewAttribute id="DELIVERED_QUANTITY"/>
-      <viewAttribute id="GOODS_MOVEMENT_STATUS"/>
-      <viewAttribute id="CONFIRMED_DELIVERY_DATE"/>
+      <viewAttribute id="LFGSA"/>
+      <viewAttribute id="LFSTA"/>
+      <viewAttribute id="MCEX_B_LFDAT"/>
+      <viewAttribute id="MCEX_I_LFDAT"/>
+      <viewAttribute id="MCEX_W_LFDAT"/>
+      <viewAttribute id="BMENG"/>
+      <viewAttribute id="VSMNG"/>
+      <viewAttribute id="WMENG"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="SALES_DOC_ORDER_DELIVERY">
-      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_SCHEDULE_LINE_NUMBER" source="ETENR"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY" source="VBELN_VL"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_ITEM" source="POSNR_VL"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OVERALL_DELIVERY_STATUS_OF_ITEM" source="LFGSA"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_STATUS" source="LFSTA"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CONFIRMED_DELIVERY_TIME" source="MCEX_B_LFUHR"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PLANNED_GOODS_ISSUE_DATE_SCHEDULED_LINES" source="MCEX_B_WADAT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ACTUAL_DELIVERY_DATE" source="MCEX_I_LFDAT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_ACTUAL_DELIVERY_DATE" source="MCEX_I_LFDATLATE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="BASE_UNIT_OF_MEASURE" source="MEINS"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DEFAULT_DELIVERY_BLOCK" source="LIFSP"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_UNIT" source="VRKME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERED_QUANTITY" source="VSMNG"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="GOODS_MOVEMENT_STATUS" source="WBSTA"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CONFIRMED_DELIVERY_DATE" source="MCEX_B_LFDAT"/>
-    </input>
+    <input node="SALES_DOC_ORDER_DELIVERY"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_12" cardinality="C1_1" joinType="inner">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_12" cardinality="CN_1" joinType="leftOuter">
     <viewAttributes>
-      <viewAttribute id="VBELN_2"/>
-      <viewAttribute id="POSNR"/>
-      <viewAttribute id="DELIVERY_SCHEDULE_LINE_NUMBER"/>
-      <viewAttribute id="DELIVERY"/>
-      <viewAttribute id="DELIVERY_ITEM"/>
-      <viewAttribute id="OVERALL_DELIVERY_STATUS_OF_ITEM"/>
-      <viewAttribute id="DELIVERY_STATUS"/>
-      <viewAttribute id="CONFIRMED_DELIVERY_TIME"/>
-      <viewAttribute id="PLANNED_GOODS_ISSUE_DATE_SCHEDULED_LINES"/>
-      <viewAttribute id="MCEX_I_WADAT"/>
-      <viewAttribute id="MCEX_I_WADATLATE"/>
-      <viewAttribute id="ACTUAL_DELIVERY_DATE"/>
-      <viewAttribute id="MCEX_I_LFUHR"/>
-      <viewAttribute id="LAST_ACTUAL_DELIVERY_DATE"/>
-      <viewAttribute id="MCEX_I_LFUHRLATE"/>
-      <viewAttribute id="BASE_UNIT_OF_MEASURE"/>
-      <viewAttribute id="DEFAULT_DELIVERY_BLOCK"/>
-      <viewAttribute id="VBEP_DELETED"/>
-      <viewAttribute id="SALES_UNIT"/>
-      <viewAttribute id="DELIVERED_QUANTITY" aggregationType="sum"/>
-      <viewAttribute id="GOODS_MOVEMENT_STATUS"/>
-      <viewAttribute id="CONFIRMED_DELIVERY_DATE"/>
       <viewAttribute id="CompanyCode"/>
       <viewAttribute id="CreationDate"/>
       <viewAttribute id="SalesDocType"/>
@@ -1114,32 +1084,23 @@
       <viewAttribute id="KPEIN" aggregationType="sum"/>
       <viewAttribute id="KMEIN"/>
       <viewAttribute id="CC_DocMonth"/>
+      <viewAttribute id="ROW" aggregationType="sum"/>
+      <viewAttribute id="VBELN_1"/>
+      <viewAttribute id="POSNR"/>
+      <viewAttribute id="LFGSA"/>
+      <viewAttribute id="LFSTA"/>
+      <viewAttribute id="MCEX_B_LFDAT"/>
+      <viewAttribute id="MCEX_I_LFDAT"/>
+      <viewAttribute id="MCEX_W_LFDAT"/>
+      <viewAttribute id="BMENG" aggregationType="sum"/>
+      <viewAttribute id="VSMNG" aggregationType="sum"/>
+      <viewAttribute id="WMENG" aggregationType="sum"/>
+    
+      <viewAttribute id="YEAR"/>
+      <viewAttribute id="QUARTER"/>
+      <viewAttribute id="MONTH"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="Rank_1">
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBELN_2" source="VBELN"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="POSNR" source="POSNR"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_SCHEDULE_LINE_NUMBER" source="DELIVERY_SCHEDULE_LINE_NUMBER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY" source="DELIVERY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_ITEM" source="DELIVERY_ITEM"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OVERALL_DELIVERY_STATUS_OF_ITEM" source="OVERALL_DELIVERY_STATUS_OF_ITEM"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_STATUS" source="DELIVERY_STATUS"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CONFIRMED_DELIVERY_TIME" source="CONFIRMED_DELIVERY_TIME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PLANNED_GOODS_ISSUE_DATE_SCHEDULED_LINES" source="PLANNED_GOODS_ISSUE_DATE_SCHEDULED_LINES"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="MCEX_I_WADAT" source="MCEX_I_WADAT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="MCEX_I_WADATLATE" source="MCEX_I_WADATLATE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ACTUAL_DELIVERY_DATE" source="ACTUAL_DELIVERY_DATE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="MCEX_I_LFUHR" source="MCEX_I_LFUHR"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_ACTUAL_DELIVERY_DATE" source="LAST_ACTUAL_DELIVERY_DATE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="MCEX_I_LFUHRLATE" source="MCEX_I_LFUHRLATE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="BASE_UNIT_OF_MEASURE" source="BASE_UNIT_OF_MEASURE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DEFAULT_DELIVERY_BLOCK" source="DEFAULT_DELIVERY_BLOCK"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_DELETED" source="VBEP_DELETED"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_UNIT" source="SALES_UNIT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERED_QUANTITY" source="DELIVERED_QUANTITY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="GOODS_MOVEMENT_STATUS" source="GOODS_MOVEMENT_STATUS"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CONFIRMED_DELIVERY_DATE" source="CONFIRMED_DELIVERY_DATE"/>
-    </input>
     <input node="Join_11">
       <mapping xsi:type="Calculation:AttributeMapping" target="CompanyCode" source="CompanyCode"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CreationDate" source="CreationDate"/>
@@ -1180,297 +1141,247 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="KPEIN" source="KPEIN"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="KMEIN" source="KMEIN"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_DocMonth" source="CC_DocMonth"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBELN_2" source="VBELN"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="POSNR" source="Item"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER" source="QUARTER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
     </input>
-    <joinAttribute name="VBELN_2"/>
-    <joinAttribute name="POSNR"/>
-  </calculationView>
-  <calculationView xsi:type="Calculation:RankView" id="Rank_1">
-    <viewAttributes>
-      <viewAttribute id="VBELN"/>
-      <viewAttribute id="POSNR"/>
-      <viewAttribute id="DELIVERY_SCHEDULE_LINE_NUMBER"/>
-      <viewAttribute id="DELIVERY"/>
-      <viewAttribute id="DELIVERY_ITEM"/>
-      <viewAttribute id="OVERALL_DELIVERY_STATUS_OF_ITEM"/>
-      <viewAttribute id="DELIVERY_STATUS"/>
-      <viewAttribute id="CONFIRMED_DELIVERY_TIME"/>
-      <viewAttribute id="PLANNED_GOODS_ISSUE_DATE_SCHEDULED_LINES"/>
-      <viewAttribute id="MCEX_I_WADAT"/>
-      <viewAttribute id="MCEX_I_WADATLATE"/>
-      <viewAttribute id="ACTUAL_DELIVERY_DATE"/>
-      <viewAttribute id="MCEX_I_LFUHR"/>
-      <viewAttribute id="LAST_ACTUAL_DELIVERY_DATE"/>
-      <viewAttribute id="MCEX_I_LFUHRLATE"/>
-      <viewAttribute id="BASE_UNIT_OF_MEASURE"/>
-      <viewAttribute id="DEFAULT_DELIVERY_BLOCK"/>
-      <viewAttribute id="VBEP_DELETED"/>
-      <viewAttribute id="SALES_UNIT"/>
-      <viewAttribute id="DELIVERED_QUANTITY" aggregationType="sum"/>
-      <viewAttribute id="GOODS_MOVEMENT_STATUS"/>
-      <viewAttribute id="CONFIRMED_DELIVERY_DATE"/>
-    </viewAttributes>
-    <calculatedViewAttributes/>
-    <input node="Projection_13"/>
-    <rankingFilter type="RANK" offset="0" offsetReference="FRONT" dynamicPartitionAttributes="false">
-      <partitionViewAttributeName id="VBELN"/>
-      <partitionViewAttributeName id="POSNR"/>
-      <order byViewAttributeName="DELIVERY_SCHEDULE_LINE_NUMBER" direction="ASC"/>
-      <rankThreshold>
-        <value>1</value>
-      </rankThreshold>
-    </rankingFilter>
+    <input node="Projection_13">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ROW" source="ROW"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBELN_1" source="VBELN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSNR" source="POSNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LFGSA" source="LFGSA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LFSTA" source="LFSTA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MCEX_B_LFDAT" source="MCEX_B_LFDAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MCEX_I_LFDAT" source="MCEX_I_LFDAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MCEX_W_LFDAT" source="MCEX_W_LFDAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BMENG" source="BMENG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VSMNG" source="VSMNG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WMENG" source="WMENG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Item" source="POSNR"/>
+    </input>
+    <joinAttribute name="VBELN"/>
+    <joinAttribute name="Item"/>
   </calculationView>
 </calculationViews>
 <logicalModel id="Join_12">
   <attributes>
-    <attribute id="VBELN_2" order="1" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="VBELN"/>
-      <keyMapping columnObjectName="Join_12" columnName="VBELN_2"/>
-    </attribute>
-    <attribute id="POSNR" order="2" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="POSNR"/>
-      <keyMapping columnObjectName="Join_12" columnName="POSNR"/>
-    </attribute>
-    <attribute id="DELIVERY_SCHEDULE_LINE_NUMBER" order="3" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="DELIVERY_SCHEDULE_LINE_NUMBER"/>
-      <keyMapping columnObjectName="Join_12" columnName="DELIVERY_SCHEDULE_LINE_NUMBER"/>
-    </attribute>
-    <attribute id="DELIVERY" order="4" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="DELIVERY"/>
-      <keyMapping columnObjectName="Join_12" columnName="DELIVERY"/>
-    </attribute>
-    <attribute id="DELIVERY_ITEM" order="5" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="DELIVERY_ITEM"/>
-      <keyMapping columnObjectName="Join_12" columnName="DELIVERY_ITEM"/>
-    </attribute>
-    <attribute id="OVERALL_DELIVERY_STATUS_OF_ITEM" order="6" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="OVERALL_DELIVERY_STATUS_OF_ITEM"/>
-      <keyMapping columnObjectName="Join_12" columnName="OVERALL_DELIVERY_STATUS_OF_ITEM"/>
-    </attribute>
-    <attribute id="DELIVERY_STATUS" order="7" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="DELIVERY_STATUS"/>
-      <keyMapping columnObjectName="Join_12" columnName="DELIVERY_STATUS"/>
-    </attribute>
-    <attribute id="CONFIRMED_DELIVERY_TIME" order="8" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CONFIRMED_DELIVERY_TIME"/>
-      <keyMapping columnObjectName="Join_12" columnName="CONFIRMED_DELIVERY_TIME"/>
-    </attribute>
-    <attribute id="PLANNED_GOODS_ISSUE_DATE_SCHEDULED_LINES" order="9" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="PLANNED_GOODS_ISSUE_DATE_SCHEDULED_LINES"/>
-      <keyMapping columnObjectName="Join_12" columnName="PLANNED_GOODS_ISSUE_DATE_SCHEDULED_LINES"/>
-    </attribute>
-    <attribute id="MCEX_I_WADAT" order="10" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="MCEX_I_WADAT"/>
-      <keyMapping columnObjectName="Join_12" columnName="MCEX_I_WADAT"/>
-    </attribute>
-    <attribute id="MCEX_I_WADATLATE" order="11" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="MCEX_I_WADATLATE"/>
-      <keyMapping columnObjectName="Join_12" columnName="MCEX_I_WADATLATE"/>
-    </attribute>
-    <attribute id="ACTUAL_DELIVERY_DATE" order="12" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="ACTUAL_DELIVERY_DATE"/>
-      <keyMapping columnObjectName="Join_12" columnName="ACTUAL_DELIVERY_DATE"/>
-    </attribute>
-    <attribute id="MCEX_I_LFUHR" order="13" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="MCEX_I_LFUHR"/>
-      <keyMapping columnObjectName="Join_12" columnName="MCEX_I_LFUHR"/>
-    </attribute>
-    <attribute id="LAST_ACTUAL_DELIVERY_DATE" order="14" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="LAST_ACTUAL_DELIVERY_DATE"/>
-      <keyMapping columnObjectName="Join_12" columnName="LAST_ACTUAL_DELIVERY_DATE"/>
-    </attribute>
-    <attribute id="MCEX_I_LFUHRLATE" order="15" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="MCEX_I_LFUHRLATE"/>
-      <keyMapping columnObjectName="Join_12" columnName="MCEX_I_LFUHRLATE"/>
-    </attribute>
-    <attribute id="BASE_UNIT_OF_MEASURE" order="16" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="BASE_UNIT_OF_MEASURE"/>
-      <keyMapping columnObjectName="Join_12" columnName="BASE_UNIT_OF_MEASURE"/>
-    </attribute>
-    <attribute id="DEFAULT_DELIVERY_BLOCK" order="17" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="DEFAULT_DELIVERY_BLOCK"/>
-      <keyMapping columnObjectName="Join_12" columnName="DEFAULT_DELIVERY_BLOCK"/>
-    </attribute>
-    <attribute id="VBEP_DELETED" order="18" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="VBEP_DELETED"/>
-      <keyMapping columnObjectName="Join_12" columnName="VBEP_DELETED"/>
-    </attribute>
-    <attribute id="SALES_UNIT" order="19" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="SALES_UNIT"/>
-      <keyMapping columnObjectName="Join_12" columnName="SALES_UNIT"/>
-    </attribute>
-    <attribute id="GOODS_MOVEMENT_STATUS" order="21" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="GOODS_MOVEMENT_STATUS"/>
-      <keyMapping columnObjectName="Join_12" columnName="GOODS_MOVEMENT_STATUS"/>
-    </attribute>
-    <attribute id="CONFIRMED_DELIVERY_DATE" order="22" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CONFIRMED_DELIVERY_DATE"/>
-      <keyMapping columnObjectName="Join_12" columnName="CONFIRMED_DELIVERY_DATE"/>
-    </attribute>
-    <attribute id="CompanyCode" order="23" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CompanyCode" order="1" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CompanyCode"/>
       <keyMapping columnObjectName="Join_12" columnName="CompanyCode"/>
     </attribute>
-    <attribute id="CreationDate" order="24" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CreationDate" order="2" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CreationDate"/>
       <keyMapping columnObjectName="Join_12" columnName="CreationDate"/>
     </attribute>
-    <attribute id="SalesDocType" order="25" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="SalesDocType" order="3" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="SalesDocType"/>
       <keyMapping columnObjectName="Join_12" columnName="SalesDocType"/>
     </attribute>
-    <attribute id="Customer" order="26" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Customer" order="4" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Customer"/>
       <keyMapping columnObjectName="Join_12" columnName="Customer"/>
     </attribute>
-    <attribute id="SalesOrg" order="27" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="SalesOrg" order="5" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="SalesOrg"/>
       <keyMapping columnObjectName="Join_12" columnName="SalesOrg"/>
     </attribute>
-    <attribute id="SalesDocument" order="28" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="SalesDocument" order="6" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="SalesDocument"/>
       <keyMapping columnObjectName="Join_12" columnName="SalesDocument"/>
     </attribute>
-    <attribute id="DocDate" order="29" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="DocDate" order="7" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="DocDate"/>
       <keyMapping columnObjectName="Join_12" columnName="DocDate"/>
     </attribute>
-    <attribute id="DocMonth" order="30" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="DocMonth" order="8" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="DocMonth"/>
       <keyMapping columnObjectName="Join_12" columnName="DocMonth"/>
     </attribute>
-    <attribute id="VBELN" order="31" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="VBELN" order="9" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="VBELN"/>
       <keyMapping columnObjectName="Join_12" columnName="VBELN"/>
     </attribute>
-    <attribute id="Item" order="32" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Item" order="10" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Item"/>
       <keyMapping columnObjectName="Join_12" columnName="Item"/>
     </attribute>
-    <attribute id="Createdby" order="33" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Createdby" order="11" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Createdby"/>
       <keyMapping columnObjectName="Join_12" columnName="Createdby"/>
     </attribute>
-    <attribute id="StorageLoc" order="34" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="StorageLoc" order="12" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="StorageLoc"/>
       <keyMapping columnObjectName="Join_12" columnName="StorageLoc"/>
     </attribute>
-    <attribute id="Material" order="35" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Material" order="13" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Material"/>
       <keyMapping columnObjectName="Join_12" columnName="Material"/>
     </attribute>
-    <attribute id="Plant" order="37" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Plant" order="15" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Plant"/>
       <keyMapping columnObjectName="Join_12" columnName="Plant"/>
     </attribute>
-    <attribute id="DocumentCurrency" order="38" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="DocumentCurrency" order="16" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="DocumentCurrency"/>
       <keyMapping columnObjectName="Join_12" columnName="DocumentCurrency"/>
     </attribute>
-    <attribute id="QtyUnits" order="40" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="QtyUnits" order="18" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="QtyUnits"/>
       <keyMapping columnObjectName="Join_12" columnName="QtyUnits"/>
     </attribute>
-    <attribute id="MaterialText" order="42" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="MaterialText" order="20" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="MaterialText"/>
       <keyMapping columnObjectName="Join_12" columnName="MaterialText"/>
     </attribute>
-    <attribute id="MaterialGroup" order="43" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="MaterialGroup" order="21" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="MaterialGroup"/>
       <keyMapping columnObjectName="Join_12" columnName="MaterialGroup"/>
     </attribute>
-    <attribute id="CustomerText" order="44" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CustomerText" order="22" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CustomerText"/>
       <keyMapping columnObjectName="Join_12" columnName="CustomerText"/>
     </attribute>
-    <attribute id="MatGroupText" order="45" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="MatGroupText" order="23" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="MatGroupText"/>
       <keyMapping columnObjectName="Join_12" columnName="MatGroupText"/>
     </attribute>
-    <attribute id="Country" order="46" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Country" order="24" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Country"/>
       <keyMapping columnObjectName="Join_12" columnName="Country"/>
     </attribute>
-    <attribute id="CountryText" order="47" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CountryText" order="25" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CountryText"/>
       <keyMapping columnObjectName="Join_12" columnName="CountryText"/>
     </attribute>
-    <attribute id="Region" order="48" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Region" order="26" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Region"/>
       <keyMapping columnObjectName="Join_12" columnName="Region"/>
     </attribute>
-    <attribute id="CITYC" order="49" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CITYC" order="27" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CITYC"/>
       <keyMapping columnObjectName="Join_12" columnName="CITYC"/>
     </attribute>
-    <attribute id="CompanyCodeText" order="50" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CompanyCodeText" order="28" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CompanyCodeText"/>
       <keyMapping columnObjectName="Join_12" columnName="CompanyCodeText"/>
     </attribute>
-    <attribute id="SalesOrgText" order="51" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="SalesOrgText" order="29" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="SalesOrgText"/>
       <keyMapping columnObjectName="Join_12" columnName="SalesOrgText"/>
     </attribute>
-    <attribute id="CALQUARTER" order="52" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CALQUARTER" order="30" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CALQUARTER"/>
       <keyMapping columnObjectName="Join_12" columnName="CALQUARTER"/>
     </attribute>
-    <attribute id="CALMONTH" order="53" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CALMONTH" order="31" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CALMONTH"/>
       <keyMapping columnObjectName="Join_12" columnName="CALMONTH"/>
     </attribute>
-    <attribute id="SalesDocTypeText" order="54" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="SalesDocTypeText" order="32" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="SalesDocTypeText"/>
       <keyMapping columnObjectName="Join_12" columnName="SalesDocTypeText"/>
     </attribute>
-    <attribute id="SalesDocumentRejectReason" order="56" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="SalesDocumentRejectReason" order="34" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="SalesDocumentRejectReason"/>
       <keyMapping columnObjectName="Join_12" columnName="SalesDocumentRejectReason"/>
     </attribute>
-    <attribute id="AUGRU" order="57" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="AUGRU" order="35" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="AUGRU"/>
       <keyMapping columnObjectName="Join_12" columnName="AUGRU"/>
     </attribute>
-    <attribute id="KMEIN" order="60" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="KMEIN" order="38" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="KMEIN"/>
       <keyMapping columnObjectName="Join_12" columnName="KMEIN"/>
     </attribute>
-    <attribute id="CC_DocMonth" order="61" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CC_DocMonth" order="39" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CC_DocMonth"/>
       <keyMapping columnObjectName="Join_12" columnName="CC_DocMonth"/>
+    </attribute>
+    <attribute id="ROW" hidden="true" order="40" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ROW"/>
+      <keyMapping columnObjectName="Join_12" columnName="ROW"/>
+    </attribute>
+    <attribute id="VBELN_1" order="41" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VBELN_DELIVERY"/>
+      <keyMapping columnObjectName="Join_12" columnName="VBELN_1"/>
+    </attribute>
+    <attribute id="POSNR" order="42" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="POSNR_DELIVERY"/>
+      <keyMapping columnObjectName="Join_12" columnName="POSNR"/>
+    </attribute>
+    <attribute id="LFGSA" order="43" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Overall Delivery Status"/>
+      <keyMapping columnObjectName="Join_12" columnName="LFGSA"/>
+    </attribute>
+    <attribute id="LFSTA" order="44" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Delivery status"/>
+      <keyMapping columnObjectName="Join_12" columnName="LFSTA"/>
+    </attribute>
+    <attribute id="MCEX_B_LFDAT" order="45" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Confirmed Delivery Date"/>
+      <keyMapping columnObjectName="Join_12" columnName="MCEX_B_LFDAT"/>
+    </attribute>
+    <attribute id="MCEX_I_LFDAT" order="46" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Actual Delivery Date"/>
+      <keyMapping columnObjectName="Join_12" columnName="MCEX_I_LFDAT"/>
+    </attribute>
+    <attribute id="MCEX_W_LFDAT" order="47" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Requested Delivery Date"/>
+      <keyMapping columnObjectName="Join_12" columnName="MCEX_W_LFDAT"/>
+    </attribute>
+  
+    <attribute id="YEAR" order="51" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="YEAR"/>
+      <keyMapping columnObjectName="Join_12" columnName="YEAR"/>
+    </attribute>
+    <attribute id="QUARTER" order="52" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUARTER"/>
+      <keyMapping columnObjectName="Join_12" columnName="QUARTER"/>
+    </attribute>
+    <attribute id="MONTH" order="53" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MONTH"/>
+      <keyMapping columnObjectName="Join_12" columnName="MONTH"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
   <baseMeasures>
-    <measure id="DELIVERED_QUANTITY" order="20" aggregationType="sum" measureType="simple">
-      <descriptions defaultDescription="DELIVERED_QUANTITY"/>
-      <measureMapping columnObjectName="Join_12" columnName="DELIVERED_QUANTITY"/>
-    </measure>
-    <measure id="NetValue" order="36" aggregationType="sum" measureType="simple">
+    <measure id="NetValue" order="14" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="NetValue"/>
       <measureMapping columnObjectName="Join_12" columnName="NetValue"/>
     </measure>
-    <measure id="TargetQty" order="39" aggregationType="sum" measureType="simple">
+    <measure id="TargetQty" order="17" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="TargetQty"/>
       <measureMapping columnObjectName="Join_12" columnName="TargetQty"/>
     </measure>
-    <measure id="NetWeight" order="41" aggregationType="sum" measureType="simple">
+    <measure id="NetWeight" order="19" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="NetWeight"/>
       <measureMapping columnObjectName="Join_12" columnName="NetWeight"/>
     </measure>
-    <measure id="OrderQty" order="55" aggregationType="sum" measureType="simple">
+    <measure id="OrderQty" order="33" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="OrderQty"/>
       <measureMapping columnObjectName="Join_12" columnName="OrderQty"/>
     </measure>
-    <measure id="NETPR" order="58" aggregationType="sum" measureType="simple">
+    <measure id="NETPR" order="36" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="NETPR"/>
       <measureMapping columnObjectName="Join_12" columnName="NETPR"/>
     </measure>
-    <measure id="KPEIN" order="59" aggregationType="sum" measureType="simple">
+    <measure id="KPEIN" order="37" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="KPEIN"/>
       <measureMapping columnObjectName="Join_12" columnName="KPEIN"/>
+    </measure>
+    <measure id="BMENG" order="48" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Confirmed Quantity of Sales"/>
+      <measureMapping columnObjectName="Join_12" columnName="BMENG"/>
+    </measure>
+    <measure id="VSMNG" order="49" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Delivered Quantity in Sale"/>
+      <measureMapping columnObjectName="Join_12" columnName="VSMNG"/>
+    </measure>
+    <measure id="WMENG" order="50" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Requested Quantity of Sales"/>
+      <measureMapping columnObjectName="Join_12" columnName="WMENG"/>
     </measure>
   </baseMeasures>
   <calculatedMeasures/>
@@ -1480,21 +1391,21 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="468.71800912064055" y="112"/>
+      <upperLeftCorner x="800" y="112"/>
     
-      <rectangleSize width="195"/>
+      <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="SO_HDR_P" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="245.83239953592428" y="1976.9999868869781"/>
+      <upperLeftCorner x="91" y="1976"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="SO_ITM_P" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="455.8323995359242" y="1976.9999868869781"/>
+      <upperLeftCorner x="302" y="1976"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="272.49906620259094" y="1816.999988079071"/>
+      <upperLeftCorner x="118" y="1816"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="SO_ITM_P" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
@@ -1507,11 +1418,11 @@
     </shape>
   
     <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="560.2895453809705" y="1816.999988079071"/>
+      <upperLeftCorner x="378" y="1816"/>
       <rectangleSize height="30" width="162"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="534.6228787143039" y="1656.999989271164"/>
+      <upperLeftCorner x="145" y="1656"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
@@ -1523,7 +1434,7 @@
       <rectangleSize width="250"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="311.20973026247214" y="1496.9999904632568"/>
+      <upperLeftCorner x="171" y="1496"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
@@ -1535,11 +1446,11 @@
       <rectangleSize width="250"/>
     </shape>
     <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="284.5430635958055" y="1656.999989271164"/>
+      <upperLeftCorner x="470" y="1656"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="502.5919189627674" y="1336.9999916553497"/>
+      <upperLeftCorner x="198" y="1336"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
@@ -1551,15 +1462,15 @@
       <rectangleSize width="250"/>
     </shape>
     <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="580.5594100498549" y="1496.9999904632568"/>
+      <upperLeftCorner x="574" y="1496"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Projection_7" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="292.5919189627674" y="1336.9999916553497"/>
+      <upperLeftCorner x="690" y="1336"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="319.25858562943404" y="1176.9999928474426"/>
+      <upperLeftCorner x="225" y="1176"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_4" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
@@ -1571,11 +1482,11 @@
       <rectangleSize width="250"/>
     </shape>
     <shape expanded="true" modelObjectName="Projection_8" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="574.972207738494" y="1176.9999928474426"/>
+      <upperLeftCorner x="816" y="1176"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_7" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="474.8513582795547" y="1016.9999940395355"/>
+      <upperLeftCorner x="790" y="1016"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_6" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
@@ -1588,11 +1499,11 @@
     </shape>
   
     <shape expanded="true" modelObjectName="Projection_9" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="264.8513582795546" y="1016.9999940395355"/>
+      <upperLeftCorner x="566" y="1016"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_8" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="448.18469161288795" y="856.9999952316284"/>
+      <upperLeftCorner x="593" y="856"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_7" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
@@ -1605,11 +1516,11 @@
     </shape>
   
     <shape expanded="true" modelObjectName="Projection_10" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="91.99999999999997" y="856.9999952316284"/>
+      <upperLeftCorner x="803" y="856"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_9" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="118.6666666666666" y="696.9999964237213"/>
+      <upperLeftCorner x="776" y="696"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_8" modelObjectNameSpace="Join_9" modelObjectType="JoinNodeInput">
@@ -1621,11 +1532,11 @@
       <rectangleSize width="250"/>
     </shape>
     <shape expanded="true" modelObjectName="Projection_11" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="328.6666666666665" y="696.9999964237213"/>
+      <upperLeftCorner x="514" y="696"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_10" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="202.4663834391798" y="536.9999976158142"/>
+      <upperLeftCorner x="541" y="536"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_9" modelObjectNameSpace="Join_10" modelObjectType="JoinNodeInput">
@@ -1637,11 +1548,11 @@
       <rectangleSize width="250"/>
     </shape>
     <shape expanded="true" modelObjectName="Projection_12" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="412.4663834391798" y="536.9999976158142"/>
+      <upperLeftCorner x="751" y="536"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_11" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="229.13305010584648" y="376.9999988079071"/>
+      <upperLeftCorner x="568" y="376"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_10" modelObjectNameSpace="Join_11" modelObjectType="JoinNodeInput">
@@ -1654,24 +1565,20 @@
     </shape>
   
     <shape expanded="true" modelObjectName="Projection_13" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="622.4663834391798" y="536.9999976158142"/>
+      <upperLeftCorner x="855" y="376"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_12" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="486.21800912064055" y="217"/>
+      <upperLeftCorner x="800" y="217"/>
       <rectangleSize height="30" width="160"/>
-    </shape>
-    <shape modelObjectName="Rank_1" modelObjectNameSpace="Join_12" modelObjectType="JoinNodeInput">
-      <upperLeftCorner x="-73" y="43"/>
-      <rectangleSize width="344"/>
     </shape>
     <shape modelObjectName="Join_11" modelObjectNameSpace="Join_12" modelObjectType="JoinNodeInput">
-      <upperLeftCorner x="227" y="30"/>
-      <rectangleSize width="250"/>
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="179"/>
     </shape>
-    <shape expanded="true" modelObjectName="Rank_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="569.666265221593" y="394.4999988079071"/>
-      <rectangleSize height="30" width="160"/>
+    <shape modelObjectName="Projection_13" modelObjectNameSpace="Join_12" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="168"/>
     </shape>
   </shapes>
 </layout>
